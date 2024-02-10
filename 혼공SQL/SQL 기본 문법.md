@@ -1,6 +1,7 @@
 # SELECT ~ FROM ~ WHERE
 
-**SELECT** - 구축이 완료된 테이블에서 데이터를 추출하는 기능. (*전체 또는 열 이름들이 들어간다)
+**SELECT** 
+- 구축이 완료된 테이블에서 데이터를 추출하는 기능. (*전체 또는 열 이름들이 들어간다)
 
 ```SQL
 -- addr열에서 경기, 전남, 경남인 데이터 행에서 mem_name과 addr 열의 데이터들만 뽑아내라
@@ -21,9 +22,11 @@ SELECT * FROM FROM member WHERE mem_name LIKE '__핑크'
 ```
 
 
+
 ## SELECT절의 형식 (ORDER BY, GROUP BY)
 
 ![Untitled](https://github.com/junhosong0/MySQL/assets/117610783/d37830d2-26f7-4959-a21b-a7418c05b7a6)
+
 
 ### ORDER BY (정렬 기능)
 
@@ -41,6 +44,7 @@ SELECT mem_name, debut_date --- 5
 -- 중복된것들 제거하고 하나씩만 보여줘라
 SELECT DISTINCT addr FROM member 
 ```
+
 
 ### GROUP BY (묶어주는 기능)
 
@@ -82,11 +86,13 @@ SELECT mem_id "회원 아이디", SUM(price*amount) "총 구매 금액"
 	ORDER BY SUM(price*amount) DESC
 ```
 
+
+
 ## 데이터 변경을 위한 SQL문
 
 ### INSERT(입력)
 
-기본
+**기본**
 ```SQL
 USE market_db;
 CREATE TABLE hongong1 (toy_id INT, toy_name CHAR(4), age INT);
@@ -97,7 +103,9 @@ INSERT INTO hongong1(toy_id, toy_name) VALUES (1, '우디');
 INSERT INTO hongong1(toy_name, age, toy_id) VALUES ('제시', 20, 3);
 ```
 
-AUTO_INCREMENT
+
+
+**AUTO_INCREMENT**
 - 자동 증가 기능, 기본키에만 사용할 수 있으며 행이 생성 될 때 자동으로 값을 증가시키면서 넣어줌
 ```SQL
 CREATE TABLE hongong2(
@@ -118,7 +126,9 @@ SELECT* FROM hongong2
 ```
 ![Untitled (4)](https://github.com/junhosong0/MySQL/assets/117610783/b4576fa8-86f7-4b76-b2d1-e473eb8538fc)
 
-증가값에 step 추가
+
+
+**증가값에 step 추가**
 ```SQL
 CREATE TABLE hongong3 (
 	toy_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -187,6 +197,7 @@ UPDATE city_popul
 SELECT * FROM city_popul LIMIT 5;
 ```
 ![Untitled (10)](https://github.com/junhosong0/MySQL/assets/117610783/70c1396b-e0de-487b-a867-28631d80afa0)
+
 
 
 ### DELETE(삭제)
