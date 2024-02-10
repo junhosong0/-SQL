@@ -51,8 +51,7 @@ SELECT mem_id "회원 아이디", SUM(amount) "총 구매 개수"
 	FROM buy GROUP BY mem_id;
 ```
 
-### 결과 값
-
+**결과 값**
 ![Untitled (2)](https://github.com/junhosong0/MySQL/assets/117610783/729a2082-e642-455b-9ac1-356b9bda9d3c)
 
 
