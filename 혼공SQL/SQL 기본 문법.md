@@ -56,13 +56,30 @@ SELECT mem_id "회원 아이디", SUM(amount) "총 구매 개수"
 ![Untitled (2)](https://github.com/junhosong0/MySQL/assets/117610783/729a2082-e642-455b-9ac1-356b9bda9d3c)
 
 
-```SQL
-```
 
 ```SQL
+SELECT mem_id "회원 아이디", SUM(price*amount) "총 구매 금액"
+	FROM buy GROUP BY mem_i
 ```
 
+![Untitled (3)](https://github.com/junhosong0/MySQL/assets/117610783/0af747d2-728f-4a19-86fa-a316ac2c2b6b)
+
+
+그룹 함수에서 아래와 같이 WHERE절을 쓰면 에러가 뜬다.
 ```SQL
+SELECT mem_id "회원 아이디", SUM(price*amount) "총 구매 금액"
+	FROM buy
+	WHERE SUM(price*amount) > 1000
+	GROUP BY mem_id
+```
+
+그룹 함수에서는 아래와 같이 WHERE절 대신 HAVING절을 써야 한다.
+```SQL
+SELECT mem_id "회원 아이디", SUM(price*amount) "총 구매 금액"
+	FROM buy
+	GROUP BY mem_id
+	HAVING SUM(price*amount) > 1000
+	ORDER BY SUM(price*amount) DESC
 ```
 
 ```SQL
