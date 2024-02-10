@@ -82,8 +82,118 @@ SELECT mem_id "회원 아이디", SUM(price*amount) "총 구매 금액"
 	ORDER BY SUM(price*amount) DESC
 ```
 
+## 데이터 변경을 위한 SQL문
+
+### INSERT(입력)
+
+기본
 ```SQL
+USE market_db;
+CREATE TABLE hongong1 (toy_id INT, toy_name CHAR(4), age INT);
+INSERT INTO hongong1 VALUES (1, '우디', 25);
+
+INSERT INTO hongong1(toy_id, toy_name) VALUES (1, '우디');
+
+INSERT INTO hongong1(toy_name, age, toy_id) VALUES ('제시', 20, 3);
 ```
 
+AUTO_INCREMENT
+- 자동 증가 기능, 기본키에만 사용할 수 있으며 행이 생성 될 때 자동으로 값을 증가시키면서 넣어줌
 ```SQL
+CREATE TABLE hongong2(
+	toy_id INT AUTO_INCREMENT PRIMARY KEY,
+    toay_name CHAR(4),
+    age INT);
+
+INSERT INTO hongong2 VALUES (NULL, '보핍',25);
+INSERT INTO hongong2 VALUES (NULL, '슬링키',22);
+INSERT INTO hongong2 VALUES (NULL, '보렉스',21);
+
+
+SELECT LAST_INSERT_ID():; -- ID가 마지막으로 어디까지 입력되었는지 확인하는 코드
+
+ALTER TABLE hongong2 AUTO_INCREMENT = 100; -- 지금부터 오토 인크리먼트를 100번부터로 하겠다
+INSERT INTO hongong2 VALUES (NULL, '재남', 35);
+SELECT* FROM hongong2
 ```
+![Untitled (4)](https://github.com/junhosong0/MySQL/assets/117610783/b4576fa8-86f7-4b76-b2d1-e473eb8538fc)
+
+증가값에 step 추가
+```SQL
+CREATE TABLE hongong3 (
+	toy_id INT AUTO_INCREMENT PRIMARY KEY,
+    toy_name CHAR(4),
+    age INT);
+
+ALTER TABLE hongong3 AUTO_INCREMENT = 1000;
+SET @@auto_increment_increment=3; -- 3개씩 증가
+
+INSERT INTO hongong3 VALUES (NULL, '토마스', 20);
+INSERT INTO hongong3 VALUES (NULL, '제임스', 23);
+INSERT INTO hongong3 VALUES (NULL, '고든', 25);
+SELECT * FROM hongong3;
+```
+![Untitled (5)](https://github.com/junhosong0/MySQL/assets/117610783/172db2a1-bfaf-4069-a96a-6ababad107de)
+
+
+**테이블 description**
+```SQL
+DESC hongong3;
+```
+![Untitled (6)](https://github.com/junhosong0/MySQL/assets/117610783/03dfc667-9f96-47da-98d4-69da9cd6e1cf)
+
+
+**INSERT INTO ~ SELECT**
+- 열 값들 한꺼번에 가져오기
+```SQL
+CREATE TABLE city_popul (city_name CHAR(35), population INT); -- 새 테이블 생성
+
+-- city_popul 테이블에 world 스키마의 city테이블에 있는 Name과 Population 열에 있는 데이터들을 추가해줌
+INSERT INTO city_popul
+	SELECT Name, Population from world.city; 
+
+SELECT * FROM city_popul
+```
+![Untitled (7)](https://github.com/junhosong0/MySQL/assets/117610783/3b723129-c3c0-4419-a47c-ff8cd5d2b62b)
+
+
+
+### UPDATE(수정)
+
+**SET**
+-주의할점!!! WHERE절 없이 사용하면 열 전체의 내용을 전부 수정해버린다. WHERE절 없이 사용하는 경우는 거의 없다 
+```SQL
+-- city_popul 테이블의 city_name열의 데이터가 'Seoul'인것을 찾아 '서울'로 바꿔줌
+UPDATE city_popul
+	SET city_name = '서울'
+    WHERE city_name = 'Seoul';
+SELECT * FROM city_popul WHERE city_name = '서울';
+```
+![Untitled (8)](https://github.com/junhosong0/MySQL/assets/117610783/9843c7dd-34d5-48ae-9121-935daebb036e)
+
+```SQL
+-- 위의 코드와 거의 같고 population까지 0으로 만들어줌
+UPDATE city_popul
+	SET city_name = '서울', population = 0
+    WHERE city_name = 'Seoul';
+SELECT * FROM city_popul WHERE city_name = '서울';
+```
+![Untitled (9)](https://github.com/junhosong0/MySQL/assets/117610783/1662ae0c-c756-41c4-bc69-d71726e726cb)
+
+```SQL
+-- 모든 population의 값을 1만 단위 기준으로 바꿔줌
+UPDATE city_popul
+	SET population = population / 10000 ;
+SELECT * FROM city_popul LIMIT 5;
+```
+![Untitled (10)](https://github.com/junhosong0/MySQL/assets/117610783/70c1396b-e0de-487b-a867-28631d80afa0)
+
+
+### DELETE(삭제)
+```SQL
+-- city_popul 테이블의 city_name열 데이터들 중에 'NEW'로 시작하는 데이터들을 지우는데 가장위의 5개만 지워
+DELETE FROM city_popul
+	WHERE city_name LIKE 'NEW%'
+    LIMIT 5;
+```
+![Untitled (11)](https://github.com/junhosong0/MySQL/assets/117610783/ce5ba02f-3a3d-4526-9685-d35c0de8f248)
