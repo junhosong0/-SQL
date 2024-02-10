@@ -21,11 +21,25 @@ SELECT * FROM FROM member WHERE mem_name LIKE '__핑크'
 ```
 
 
+## SELECT절의 형식 (ORDER BY, GROUP BY)
+
+![Untitled](https://github.com/junhosong0/MySQL/assets/117610783/d37830d2-26f7-4959-a21b-a7418c05b7a6)
+
+### ORDER BY (정렬 기능)
 
 ```SQL
+-- member테이블에서 height가 165이상인 데이터행들 중에서 debut_date로 내림차순 정렬하고 가장 위의 3번째부터 2개의 데이터행들을 보여주는데 mem_name과 debut_date 열들만 보여줘라
+
+SELECT mem_name, debut_date --- 5
+	FROM member --- 1
+	WHERE height >= 165 --- 2
+	ORDER BY debut_date DESC --- 3
+	LIMIT 3, 2 --- 4
 ```
 
 ```SQL
+-- 중복된것들 제거하고 하나씩만 보여줘라
+SELECT DISTINCT addr FROM member 
 ```
 
 ```SQL
