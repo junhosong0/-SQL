@@ -21,12 +21,15 @@ SELECT * FROM member WHERE mem_name LIKE '우%'
 SELECT * FROM FROM member WHERE mem_name LIKE '__핑크' 
 ```
 
-
+<br/>
+<br/>
 
 ## SELECT절의 형식 (ORDER BY, GROUP BY)
 
 ![Untitled](https://github.com/junhosong0/MySQL/assets/117610783/d37830d2-26f7-4959-a21b-a7418c05b7a6)
 
+<br/>
+<br/>
 
 ### ORDER BY (정렬 기능)
 
@@ -45,6 +48,8 @@ SELECT mem_name, debut_date --- 5
 SELECT DISTINCT addr FROM member 
 ```
 
+<br/>
+<br/>
 
 ### GROUP BY (묶어주는 기능)
 
@@ -86,7 +91,8 @@ SELECT mem_id "회원 아이디", SUM(price*amount) "총 구매 금액"
 	ORDER BY SUM(price*amount) DESC
 ```
 
-
+<br/>
+<br/>
 
 ## 데이터 변경을 위한 SQL문
 
@@ -102,7 +108,6 @@ INSERT INTO hongong1(toy_id, toy_name) VALUES (1, '우디');
 
 INSERT INTO hongong1(toy_name, age, toy_id) VALUES ('제시', 20, 3);
 ```
-
 
 
 **AUTO_INCREMENT**
@@ -125,7 +130,6 @@ INSERT INTO hongong2 VALUES (NULL, '재남', 35);
 SELECT* FROM hongong2
 ```
 ![Untitled (4)](https://github.com/junhosong0/MySQL/assets/117610783/b4576fa8-86f7-4b76-b2d1-e473eb8538fc)
-
 
 
 **증가값에 step 추가**
@@ -166,7 +170,7 @@ SELECT * FROM city_popul
 ```
 ![Untitled (7)](https://github.com/junhosong0/MySQL/assets/117610783/3b723129-c3c0-4419-a47c-ff8cd5d2b62b)
 
-
+<br/>
 
 ### UPDATE(수정)
 
@@ -198,7 +202,7 @@ SELECT * FROM city_popul LIMIT 5;
 ```
 ![Untitled (10)](https://github.com/junhosong0/MySQL/assets/117610783/70c1396b-e0de-487b-a867-28631d80afa0)
 
-
+<br/>
 
 ### DELETE(삭제)
 ```SQL
