@@ -29,7 +29,6 @@ SELECT * FROM FROM member WHERE mem_name LIKE '__핑크'
 ![Untitled](https://github.com/junhosong0/MySQL/assets/117610783/d37830d2-26f7-4959-a21b-a7418c05b7a6)
 
 <br/>
-<br/>
 
 ### ORDER BY (정렬 기능)
 
@@ -48,7 +47,6 @@ SELECT mem_name, debut_date --- 5
 SELECT DISTINCT addr FROM member 
 ```
 
-<br/>
 <br/>
 
 ### GROUP BY (묶어주는 기능)
@@ -91,7 +89,6 @@ SELECT mem_id "회원 아이디", SUM(price*amount) "총 구매 금액"
 	ORDER BY SUM(price*amount) DESC
 ```
 
-<br/>
 <br/>
 
 ## 데이터 변경을 위한 SQL문
