@@ -24,6 +24,7 @@ SELECT * FROM hongong4
 
 <br/>
 <br/>
+
 ## 문자형 (CHAR,VARCHAR)
 
 ![Untitled (15)](https://github.com/junhosong0/MySQL/assets/117610783/1f99397c-a64a-4caa-977d-1af9d74d1cc6)
