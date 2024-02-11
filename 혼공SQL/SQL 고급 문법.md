@@ -22,6 +22,15 @@ SELECT * FROM hongong4
 ```
 ![Untitled (14)](https://github.com/junhosong0/MySQL/assets/117610783/ba3b53d0-db8f-4830-bae8-4711460b151e)
 
+## 문자형 (CHAR,VARCHAR)
+
+![Untitled (15)](https://github.com/junhosong0/MySQL/assets/117610783/1f99397c-a64a-4caa-977d-1af9d74d1cc6)
+
+![Untitled (16)](https://github.com/junhosong0/MySQL/assets/117610783/5295aca9-38b2-4e34-8759-1d772f1b79bf)
+
+CHAR는 고정길이 문자형 데이터에 쓰고 VARCHAR는 가변길이 문자형 데이터에 쓴다. CHAR는 고정된 자릿수를 할당하기 때문에 데이터의 공간을 많이 쓰지만 시간복잡도는 빠르고 VARCHAR는 가변형 자릿수를 할당해서 데이터 공간을 적게 쓰지만 시간복잡도는 느리다.
+
+전화번호 국번 과 같이 앞자리가 0이 있는 숫자형 자료들은 정수형으로 지정하면 앞자리 0이 떨어져 나가기 때문에 문자형으로 해야 함.
 
 ```SQL
 ```
