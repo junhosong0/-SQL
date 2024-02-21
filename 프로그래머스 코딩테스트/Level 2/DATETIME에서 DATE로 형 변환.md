@@ -20,5 +20,6 @@ ORDER BY ANIMAL_ID;
 ```
 
 **배울코드**
+
 없음
 
