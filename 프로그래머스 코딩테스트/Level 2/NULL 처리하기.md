@@ -2,8 +2,7 @@
 
 ![20240221_135858](https://github.com/junhosong0/MySQL/assets/117610783/076548c8-0845-4196-b868-3ee9ecf1944b)
 
-내코딩
-
+**내코딩**
 ```SQL
 ## 동물의 생물 종, 이름, 성별 및 중성화 여부를  -> SELECT ANIMAL_TYPE, NAME, SEX_UPON_INTAKE
 
@@ -26,4 +25,11 @@ SEX_UPON_INTAKE
 
 FROM ANIMAL_INS
 ORDER BY ANIMAL_ID;
+```
+
+**배울코딩**
+```SQL
+SELECT ANIMAL_TYPE,IFNULL(NAME,"No name"),SEX_UPON_INTAKE
+FROM ANIMAL_INS
+ORDER BY ANIMAL_ID
 ```
