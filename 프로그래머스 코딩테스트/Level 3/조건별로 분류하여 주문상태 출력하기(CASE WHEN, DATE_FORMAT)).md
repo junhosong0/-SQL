@@ -19,11 +19,11 @@ order by order_id;
 
 
 **배운 것**
-- 중첩 if문을 사용해서 풀 수 있음.
+- JOIN USING을 써서 푼 것
 
 ```sql
-SELECT ORDER_ID,PRODUCT_ID,date_format(OUT_DATE,'%Y-%m-%d') as OUT_DATE, 
-    if(out_date <= '2022-05-01','출고완료',if(out_date is null,'출고미정','출고대기')) as '출고여부'
-from food_order
-order by order_id;
+SELECT ANIMAL_ID, I.NAME
+FROM ANIMAL_INS I JOIN ANIMAL_OUTS O USING(ANIMALID)
+WHERE I.DATETIME > O.DATETIME
+ORDER BY I.DATETIME ASC
 ```
