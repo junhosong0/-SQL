@@ -14,7 +14,14 @@ LIMIT 2
 
 **배울것**
 - ORDER BY 절에는 기존 컬럼만 가능한게 아니라 함수를 사용하여 조건을 써서도 order by를 할 수 있다. 위에 내코드를 하면서 알아냄.
+- 아래는 어렵지만 서브쿼리와 RANK함수에 대해 배울 수 있는 코드. 다시 복습할 수 있도록.
 - 
 ```sql
-
+SELECT ANIMALID , NAME
+FROM (
+SELECT OUTS.ANIMALID , OUTS.NAME , RANK() OVER (ORDER BY DATEDIFF(INS.DATETIME , OUTS.DATETIME)) , DATEDIFF(INS.DATETIME , OUTS.DATETIME) AS DIFF
+FROM ANIMALOUTS OUTS
+JOIN ANIMALINS INS ON OUTS.ANIMALID = INS.ANIMALID
+LIMIT 2) ANIMAL
+ORDER BY DIFF ASC
 ```
